@@ -32,13 +32,15 @@ function addClick(event) {
 
     console.log(carMadel, modelyear, ManuFacturer);
     var anyName = new Cars(carMadel, modelyear, ManuFacturer);
-  var  anyName= getRandomInt();
-   var  anyName=showRow();
+   anyName.getRandomInt();
+     anyName.showRow();
+     getTotal();
 
 
     localStorage.setItem('data', JSON.stringify(allData));
 
 }
+
 
 function shwoHeader() {
     var raw = document.createElement('tr');
@@ -62,11 +64,11 @@ tdE2.innerHTML =`${this.modelyear}`
 
 var tdE3 =document.createElement('td');
 trEl.appendChild(tdE3);
-tdE3.innerHTML =`${this.modelyear}`
+tdE3.innerHTML =`${this.randomNumber}`;
 
 var tdE4 =document.createElement('td');
 trEl.appendChild(tdE4);
-tdE4.innerHTML =`${this.randomNumber}`
+tdE4.innerHTML =`${this.ManuFacturer}`;
 
 
 }
@@ -79,7 +81,8 @@ tdE4.innerHTML =`${this.randomNumber}`
 
 var pull=JSON.parse(localStorage.getItem('data'))
 for(var i=0; i<pull.length; i++){
-    new Cars(pull[i].AnyName, pull[i].modelyear, pull[i].ManuFacturer)
+    console.log(carMadel, modelyear, ManuFacturer);
+    new Cars(pull[i].carMadel, pull[i].modelyear, pull[i].ManuFacturer)
 }
 for(var o=0; o<allData.length; o++){
     allData[o].getRandomInt();
@@ -93,6 +96,7 @@ function getTotal(){
     }
     document.getElementById('p').innerHTML =`pric= ${total}`;
 }
+getTotal();
 //helper function
 
 function getRandomInt(min, max) {
